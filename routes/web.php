@@ -2,11 +2,22 @@
 
 use App\Http\Controllers\AuthController;
 use App\Models\User;
+use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 use Inertia\Inertia;
 
-Route::get('/', function () {
-    return Inertia::render('Home', ['users' => User::paginate(10)]);
+Route::get('/', function (Request $request) {
+    return Inertia::render('Home', ['users' => User::when($request->search, function ($query) use ($request) {
+        $query
+            ->where('name', 'like', '%'.$request->search.'%')
+            ->orWhere('email', 'like', '%'.$request->search.'%');
+    })->paginate(10)->withQueryString(),
+        'searchTerm' => $request->search,
+        'can' => [
+            'delete_user' => Auth::user() ? Auth::user()->can('delete', User::class) : null
+        ]
+    ]);
 })->name('home');
 
 // Auth routes for authenticated users

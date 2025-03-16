@@ -19,4 +19,14 @@ createInertiaApp({
             .component('Link', Link) // Add Link as global component
             .mount(el)
     },
+    progress: {
+        // The color of the progress bar...
+        color: 'white',
+
+        // Whether to include the default NProgress styles...
+        includeCSS: true,
+
+        // Whether the NProgress spinner will be shown...
+        showSpinner: true,
+    },
 })

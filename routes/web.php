@@ -8,8 +8,6 @@ Route::get('/', function () {
     return Inertia::render('Home');
 })->name('home');
 
-Route::get('/about', function () {
-   return Inertia::render('About', [
-       'user' => 'Douglas',
-   ]);
-})->name('about');
+Route::get('/register', function () {
+    return Inertia::render('Auth/Register');
+})->name('register');

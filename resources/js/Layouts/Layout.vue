@@ -1,5 +1,4 @@
-<script setup>
-</script>
+<script setup></script>
 
 <template>
     <div>
@@ -9,7 +8,9 @@
                     <Link :href="route('home')" class="nav-link">Home</Link>
                 </div>
                 <div class="space-x-6">
-                    <Link :href="route('register')" class="nav-link">Register</Link>
+                    <Link :href="route('register')" class="nav-link"
+                        >Register</Link
+                    >
                 </div>
             </nav>
         </header>

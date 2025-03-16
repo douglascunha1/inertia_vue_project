@@ -1,9 +1,12 @@
 <script setup>
     defineProps({
-        name: String,
+        user: String,
     })
 </script>
 
 <template>
-    <h1>About Page {{name}}</h1>
+    <Head title=" | About" />
+    <div>
+        <h1>About page {{ user }}</h1>
+    </div>
 </template>
